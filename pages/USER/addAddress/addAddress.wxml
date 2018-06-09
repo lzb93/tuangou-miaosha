@@ -1,0 +1,39 @@
+<import src="../../../utils/regions/regions.wxml"/>
+
+<view>
+  
+  <view class='address_wrap'>
+    <view class='address_item clearfix'>
+      <view class='title'>姓名</view>
+      <input class='title_input' placeholder='姓名' type="text" value="{{adsParams.consignee}}" bindblur='setConsignee'></input>
+    </view>
+    <view class='address_item clearfix'>
+      <view class='title'>电话</view>
+      <input class='title_input' placeholder='手机或0开头固话 - 分机号' 
+      type="text" value="{{adsParams.mobile}}" bindblur='setMobile'></input>
+    </view>
+    <view class='address_item clearfix'>
+      <view class='title'>地址</view>
+
+      <view class='title_input flex_between' data-id='0' bindtap="openRegionsModal">
+        <view class='{{adsParams.province ? "none":"" }} color_gray1'>省市区</view>
+        <view class='address_region {{adsParams.province ? "":"none" }}'>
+          {{adsParams.province_name}} {{adsParams.city_name}} {{adsParams.district_name}}
+        </view>
+        <view class='color_gray1'> > </view>
+
+      </view>
+    </view>
+    <view class='address_item clearfix'>
+      <view class='title'>详细地址</view>
+      <input class='title_input' placeholder='收件人详细地址（详细到门牌）' value="{{adsParams.address}}" bindblur='setDetail'></input>
+    </view>
+  </view>
+
+  <view class='footer main_bg'>
+    <view class='footer_btn' bindtap='submitAddress'>确认</view>
+  </view>
+
+</view>
+
+<template is="regions" data="{{regions}}"/>

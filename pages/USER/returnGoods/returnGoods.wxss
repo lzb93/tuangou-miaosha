@@ -1,0 +1,36 @@
+
+.order {
+  margin-bottom: 20rpx;
+  padding: 12rpx 20rpx;
+  background: #fff;
+}
+.seller_img {
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+}
+.seller_detail {
+  width: 570rpx;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+}
+
+.return_wrap {
+
+}
+.return_wrap .item {
+  padding: 20rpx 25rpx;
+  border-bottom: 1rpx solid #EFEFF4;
+  font-size: 24rpx;
+  background-color: #fff;
+}
+.return_wrap .item:last-child {
+  border-bottom: 0;
+}
+.return_wrap .item .title {
+  font-size: 26rpx;
+}
+.return_wrap .item .icon_right {
+  padding-top: 16rpx;
+  font-size: 28rpx;
+}

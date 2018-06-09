@@ -1,0 +1,80 @@
+/* pages/EXPRESS/address/address.wxss */
+
+page {
+  padding-bottom: 120rpx;
+  background-color: #EFEFF4;
+}
+.add_search_wrap {
+  width: 700rpx;
+  margin: 25rpx auto;
+  padding: 20rpx 25rpx;
+  border: 1rpx solid #CDCDCD;
+  background-color: #fff;
+}
+.add_search {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 6rpx;
+}
+.add_input {
+  width: 630rpx;
+  padding: 0 34rpx;
+  font-size: 26rpx;
+}
+.add_item {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.add_item .add_item_header {
+  padding: 20rpx 30rpx;
+}
+.add_item .add_item_op {
+  padding: 15rpx 28rpx;
+  border-top: 1rpx solid #CDCDCD;
+}
+.add_item .name {
+  font-size: 34rpx;
+}
+.add_item .tel {
+  font-size: 28rpx;
+}
+.add_item .add_add {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+.add_item .add_icon_red {
+  display: block;
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: 4rpx;
+  margin-right: 20rpx;
+}
+.add_item .add_icon {
+  display: block;
+  width: 38rpx;
+  height: 38rpx;
+  margin-top: 5rpx;
+}
+.add_item .add_text {
+  font-size: 28rpx;
+}
+.add_item .add_text.active {
+  color: #673826;
+}
+
+.add_footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10rpx 25rpx;
+  background-color: #EFEFF4;
+}
+.add_footer .add_btn {
+  padding: 24rpx 0;
+  border-radius: 30px;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+}

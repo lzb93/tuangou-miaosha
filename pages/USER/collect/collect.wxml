@@ -1,0 +1,26 @@
+<view>
+  <view class='product_item flex_row' wx:for="{{items}}" wx:key>
+    <view class='product_img' bindtap='openDetail' data-index="{{index}}">
+      <image src='{{host}}c=Goods&a=goodsThumImages&width=180&height=180&goods_id={{item.goods_id}}'></image>
+    </view>
+    <view class='product_context'>
+      <view class='product_text tx_ov2'>{{item.goods_name}}</view>
+      <view class='product_inner flex_between'>
+        <view>
+          <view class='product_money color_red'>￥{{item.shop_price}}</view>
+          <view class='collect_text color_gray'>库存： {{item.store_count}}</view>
+        </view>
+        <image class='icon_collect' bindtap='collectFn' data-index="{{index}}"
+        src='../../../images/{{item.is_on_sale ? "icon_collect_t.png" : "icon_collect_f.png"}}'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<!--pages/USER/pinglun/pinglun.wxml-->
+
+<view class='weui-cell weui-cell_access'>
+  <view class='weui-cell__hd'>
+    <image src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{order.goods_id}}' class='shophead'></image>
+  </view>
+  <view class='weui-cell__bd'>{{order.goods_name}}</view>
+</view> 
+<view class='weui-cell' style='display:block;'>
+  <textarea placeholder='请输入你的评价' bindblur="setpingjia" bindinput='onInput' type="text" value="{{comment}}"></textarea>
+  <view class='imgul' wx:if="{{commentIngs.length > 0}}">
+    <image class='imgli' mode='aspectFit' wx:for="{{commentIngs}}" wx:key src='{{http + item}}'></image>
+  </view>
+  <image src='../../../images/icon_add_img.png' bindtap='chooseImage' style='width:150rpx;height:150rpx;'></image>  
+
+  <view class='weui-cell xingji'>
+    <view class='weui-cell__hd'>商品星级：</view>
+    <view class='weui-cell__bd' >
+        <image wx:for="{{productStar}}" wx:key src='{{item}}' bindtap='productStar' data-index="{{index}}" class='xingjiimg'></image>
+    </view>
+  </view> 
+  <view class='weui-cell xingji'>
+    <view class='weui-cell__hd'>物流星级：</view>
+    <view class='weui-cell__bd' >
+        <image wx:for="{{wuliuStar}}" wx:key src='{{item}}' bindtap='wuliuStar' data-index="{{index}}" class='xingjiimg'></image>
+    </view>
+  </view> 
+  <view class='weui-cell xingji'>
+    <view class='weui-cell__hd'>服务星级：</view>
+    <view class='weui-cell__bd' >
+        <image wx:for="{{serviceStar}}" wx:key src='{{item}}' bindtap='serviceStar' data-index="{{index}}" class='xingjiimg'></image>
+    </view>
+  </view> 
+  <view class='weui-cell xingji'>
+    <view class='weui-cell__hd'>商品评价：</view>
+    <view class='weui-cell__bd' >
+        <image wx:for="{{xingji}}" wx:key src='{{item}}' bindtap='xingji' data-index="{{index}}" class='xingjiimg'></image>
+    </view>
+  </view> 
+</view>
+
+<button bindtap='pinglunFabu' class='footer main_bg'>发布评论</button>

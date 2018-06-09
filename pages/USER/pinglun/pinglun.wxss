@@ -1,0 +1,54 @@
+page {
+  padding-bottom: 98rpx;
+}
+view{
+  font-size:28rpx;
+}
+.weui-cell{
+  background: #ffffff;
+}
+
+.shophead{
+  width:100rpx;
+  height:100rpx;
+  padding-right: 20rpx;
+}
+textarea{
+  width: 100%
+}
+.imgli{
+  width: 150rpx;
+  height: 150rpx;
+  display:inline-block;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+
+}
+
+.xingji{
+  padding-left: 0;
+  border-top:0rpx;
+  position:initial
+
+}
+.xingjiimg{
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+.footer {
+  display: flex; 
+  position: fixed; 
+  z-index: 999; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  font-size: 32rpx; 
+  color: #fff; 
+  height: 98rpx; 
+  border-radius: 0;
+  justify-content: center; 
+  align-items: center;
+}

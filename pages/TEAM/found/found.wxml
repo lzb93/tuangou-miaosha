@@ -1,0 +1,60 @@
+<!--pages/TEAM/fight/fight.wxml-->
+<view>
+
+  <view class='seller_content flex_row'>
+    <image src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{team.goods_id}}'></image>
+    <view class='seller_text flex_between'>
+      <view class='seller_text_inner_left' style='font-size: 24rpx;'>
+        <view class='tx_ov2' style='height: 72rpx; line-height: 36rpx;'>{{team.goods_name}}</view>
+          <view style='margin-top: 14rpx; color: #B3B1B2;'>{{team.needer}} 人拼团</view> 
+      </view>
+      <view style='font-size: 22rpx; text-align: right;'>
+        <view>￥{{team.team_price}}</view>
+         <view style='margin-top: 18rpx; color: #B3B1B2; text-decoration: line-through;'>￥{{teamFound.goods_price}}</view> 
+      </view>
+    </view>
+  </view>
+
+  <view class='share'>
+    <view class='flex_row'>
+      <image class='icon_share' src='../../../images/share.png'></image>
+      <view class='share_t' wx:if="{{teamFound.status == 1}}">待分享，还差{{teamFound.need - teamFound.join}}人</view>
+      <view class='share_t color_gray1' wx:if="{{teamFound.status == 2}}">已拼团成功</view>
+    </view>
+    <view class='flex_between'>
+      <view class='avatar_wrap flex_row'>
+        <view class='avatar_item selected'>
+          <image class='icon_avatar' src='../../../images/team_leader.png'></image>
+          <image class='avatar_img' src='{{teamFound.head_pic}}'></image>
+        </view>
+        <view class='avatar_item' wx:for="{{founds}}" wx:key>
+          <image class='avatar_img' wx:if="{{item.follow_user_head_pic}}" src="{{item.follow_user_head_pic}}"></image>
+          <image class='avatar_img' wx:if="{{!item.follow_user_head_pic}}" src='../../../images/none_p.png'></image>
+        </view>
+      </view>
+      <view wx:if="{{teamFound.status == 1}}">
+        <button class='share_btn main_bg' open-type='share' wx:if="{{btn}}">邀请好友</button>
+        <button class='share_btn main_bg' wx:if="{{!btn}}" bindtap='goTeam'>去参团</button>
+      </view>
+    </view>
+  </view>
+  
+  <view class='team_time flex_between'>
+    <view class=''>开团时间</view>
+    <view class='team_t'> 
+      <view class='color_gray'>{{startTime}}</view>
+    </view>
+  </view>
+  <view class='team_time flex_between'>
+    <view class=''>结束时间</view>
+    <view class='team_t'> 
+      <view class='color_gray'>{{endTime}}</view>
+    </view>
+  </view>
+
+  <view class='fight_footer clearfix' wx:if="{{teamFound.status == 1}}">
+    <button class='team_btn right main_bg' open-type='share' wx:if="{{btn}}">邀请好友拼单</button>
+    <button class='team_btn right main_bg' wx:if="{{!btn}}" bindtap='goTeam'>去参团</button>
+  </view>
+
+</view>

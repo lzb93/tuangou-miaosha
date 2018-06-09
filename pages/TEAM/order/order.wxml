@@ -1,0 +1,41 @@
+
+<view>
+  <view class='order_item' wx:for="{{items}}" wx:key>
+    <view class='user_order_body'>
+      <view class='seller_content flex_row' bindtap='navigatorTeam' data-id="{{item.order_id}}">
+        <image src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{item.goods_id}}'></image>
+        <view class='seller_text flex_between'>
+          <view class='seller_text_inner_left' style='font-size: 24rpx;'>
+            <view class='tx_ov2' style='height: 72rpx; line-height: 36rpx;'>{{item.goods_name}}</view>
+             <view style='margin-top: 20rpx; color: #B3B1B2;' wx:if="{{!item.follow_id}}">
+              {{item.need}} 人拼团，还差{{item.need - item.join}}人
+             </view> 
+          </view>
+          <view style='font-size: 22rpx; text-align: right;'>
+            <view>￥{{item.total_amount}}</view>
+            <!-- <view style='margin-top: 18rpx; color: #B3B1B2; text-decoration: line-through;'>￥{{good.final_price}}</view> -->
+            <view style='margin-top: 60rpx; color: #B3B1B2;'>X {{item.goods_num}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='order_item_footer clearfix'>
+      <view class='footer_btn right btn_pay main_bg' wx:if="{{item.tflstatus == 1 || item.tfstatus == 1}}" 
+      bindtap='shareTeam' data-index="{{index}}">邀请好友拼团</view>
+      <view style='padding: 0 25rpx; font-size: 30rpx; text-align: right;' 
+      wx:if="{{item.tflstatus == 2 || item.tfstatus == 2}}">成团成功</view>
+      <view class='color_red' style='padding: 0 25rpx; font-size: 30rpx; text-align: right;' 
+      wx:if="{{item.tflstatus == 3 || item.tfstatus == 3}}">成团失败</view>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+
+</view>

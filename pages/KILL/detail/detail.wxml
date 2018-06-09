@@ -1,0 +1,134 @@
+<import src="../../../utils/wxParse/wxParse.wxml" />
+
+<view>
+  <view>
+    <view id="haha">
+      <!-- 轮播图 -->
+      <swiper class='swiper_wrap' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" circular="{{true}}">
+        <block wx:for="{{gallerys}}" wx:key>
+          <swiper-item>
+            <image src="{{item.image_url}}" class="slide_image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 商品信息 -->
+      <view class='detail_inner clearfix'>
+        <view class='flex_between align_items'>
+          <view class='flex_row align_items'>
+            <view class='detail_m color_red'>￥{{goods.price}}</view>
+            <view class='color_gray' wx:if="{{goods.marketPrice}}" 
+            style='text-decoration: line-through; font-size: 26rpx; margin-left: 15rpx;'>￥{{goods.marketPrice}}</view>
+          </view>
+          <view class='detail_b'>销量{{goods.saleNum}}笔</view>
+        </view>
+        <view class='detail_c tx_ov2'>{{goods.name}}</view>
+        <view class='detail_p right'>库存({{goods.store}}件)</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='detail_comment'>
+    <view class='flex_between align_items'>
+      <view class='comment_title'>商品评价（{{goods.statistics.total_sum}}）</view>
+      <navigator class='comment_link' url='/pages/HOME/comment/comment?id={{goods.goods_id}}' 
+      style="color: #535457;">查看全部 ></navigator>
+    </view>
+    <view class='comment_inner'>
+      <view class='comment_item' wx:for="{{comments}}" wx:if="{{index < 2}}" wx:key>
+        <view class='flex_between'>
+          <view class='flex_row'>
+            <image class='comment_avatar' src='{{item.head_pic}}'></image>
+            <view class='comment_name'>{{item.username}}</view>
+          </view>
+          <view class='comment_date color_gray'>{{item.add_time}}</view>
+        </view>
+
+        <view class='comment_text'>{{item.content}}</view>
+
+      </view>
+    </view>
+  </view>
+
+  <view class='detail_detail'>
+    <view class='detail_header'>
+      <view class='detail_title'>商品详情</view>
+    </view>
+      <view>
+      <block>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </block>
+    </view> 
+  </view>
+
+</view>
+
+<view class="footer flex_row">
+  <view class='footer_left flex_between'>
+    <navigator url='/pages/HOME/home/home' open-type="switchTab" class='shouye'>
+      <image src='../../../images/icon_home.png'></image>
+      <view>首页</view>
+    </navigator>
+    <view class='shouye'>
+      <image src='../../../images/icon_kf.png'></image>
+      <view>客服</view>
+      <button open-type='contact'></button>
+    </view>
+    <view class='shouye' bindtap='collectFn'>
+      <image src='../../../images/{{goods.isCollect ? "icon_collect_t.png" : "icon_collect_f.png"}}'></image>
+      <view>收藏</view>
+    </view>
+  </view>
+  
+  <view class='footer_right'> 
+    <view class='flex_box'>
+      <view class='footer_btn' bindtap='openPop' data-type='cart'>加入购物车</view>
+      <view class='footer_btn main_bg' bindtap='openPop' data-type='buy'>立即购买</view>
+    </view>
+  </view>
+</view>
+
+<view class="mask {{showPop ? '' : 'none'}}" catchtap='closePop'></view>
+<view class="pop {{showPop ? '' : 'none'}}">
+  <view class='pop_close' bindtap='closePop'>
+    <image src="../../../images/icon_empt.png"></image>
+  </view>
+  <view class='pop_header'>
+    <view class='pop_header_img'>
+      <image src="{{host}}&c=Goods&a=goodsThumImages&width=236&height=236&goods_id={{goods.goodsId}}"></image>
+    </view>
+    <view class='pop_header_c'>
+      <view class='pop_header_m'>{{activeSpec.price}}</view>
+      <view class='pop_header_k'>库存{{activeSpec.store}}件</view>
+       <view class='pop_header_s flex_row'>
+        <view wx:if="{{specs.length > 0}}">请选择</view>
+        <view wx:for="{{specs}}" wx:for-item="spec" wx:key style='margin-left: 10rpx;'>{{spec.name}}</view>
+      </view> 
+    </view>
+  </view>
+  <scroll-view scroll-y class='pop_center'>
+     <view>
+      <view class='spec_item' wx:for="{{specs}}" wx:for-item="spec" wx:key>
+        <view class='pop_center_t'>{{spec.name}}</view>
+        <view class='clearfix'>
+          <view class='color_item left {{item.selected ? "selected" : ""}}' wx:for="{{spec.list}}" wx:key 
+          data-specs="{{specs}}" data-name="{{spec.name}}" data-id="{{item.item_id}}" bindtap='selectSpec'>{{item.item}}</view>
+        </view> 
+      </view>
+    </view> 
+    <view class='pop_bottom flex_between'>
+      <view class='pop_bottom_t'>购买数量</view>
+      <view class='flex_between'>
+        <view class='btn_num' bindtap='downNum'>-</view>
+        <view class='pop_bottom_i'>
+          <input value='{{activeSpec.num}}' bindblur="onblur" bindinput='onInput'></input>
+        </view>
+        <view class='btn_num' bindtap='upNum'>+</view>
+      </view>
+    </view>
+    <view wx:if="{{activeSpec.remark}}" style='font-size: 22rpx; margin-top: 15rpx;' class='color_gray'>{{activeSpec.remark}}</view>
+  </scroll-view>
+
+  <view class='pop_footer main_bg'>
+    <view bindtap='sure'>确定</view>
+  </view>
+</view>  

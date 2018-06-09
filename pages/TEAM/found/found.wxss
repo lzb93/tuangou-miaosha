@@ -1,0 +1,100 @@
+
+page {
+  background-color: #EFEFF4;
+  padding-bottom: 110rpx;
+}
+
+.seller_content {
+  margin-bottom: 20rpx; 
+  padding: 12rpx 20rpx;
+  background: #fff;
+}
+.seller_content > image {
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+}
+.seller_text {
+  width: 570rpx;
+  padding-left: 20rpx;
+  padding-right: 5rpx;
+}
+.seller_text_inner_left {
+  width: 435rpx;
+}
+.seller_m {
+  padding: 0 25rpx 20rpx;
+  font-size: 22rpx;
+  text-align: right;
+}
+
+.share {
+  margin: 20rpx 0;
+  padding: 24rpx 25rpx;
+  background-color: #fff;
+}
+.share .icon_share {
+  display: block; 
+  width: 38rpx;
+  height: 31rpx;
+  margin-top: 8rpx;
+}
+.share .share_t {
+  margin-left: 18rpx;
+  font-size: 30rpx;
+  color: #535457;
+}
+.avatar_wrap {
+  margin: 26rpx 0 0 40rpx;
+}
+.avatar_item {
+  position: relative;
+  margin-left: 10rpx;
+}
+.avatar_item .icon_avatar {
+  position: absolute;
+  top: -3rpx;
+  left: -3rpx;
+  width: 56rpx;
+  height: 26rpx;
+}
+.avatar_item .avatar_img {
+  overflow: hidden;
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.avatar_item.selected .avatar_img {
+  border: 1rpx solid #FF9E14;
+}
+.share .share_btn {
+  line-height: 1.414;
+  padding: 16rpx 18rpx;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.team_time {
+  padding: 20rpx 25rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+
+.fight_footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 26rpx;
+  border-top: 1rpx solid #EFEFF4;
+  background-color: #fff;
+}
+.fight_footer .team_btn {
+  line-height: 1.414;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+}

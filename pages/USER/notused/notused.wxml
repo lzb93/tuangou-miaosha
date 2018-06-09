@@ -1,0 +1,42 @@
+<!--pages/USER/notused/notused.wxml-->
+<view>
+   <view class='nu_header flex_between'>
+    <view class='text {{activeType == item.type ? "active":""}}' wx:for="{{navs}}" wx:key 
+    bindtap='switchTab' data-type="{{item.type}}">{{item.name}}</view>
+  </view> 
+  <view class='wrap'>
+    <view class='ticket_wrap' wx:for="{{coupons}}" wx:key>
+      <view class='ticket_body flex_row'>
+        <view class='ticket_left'>
+          <view class='left_header flex_row'>
+            <view class='ticket_text tx_ov'>{{item.name}}</view>
+          </view>
+          <view class='left_footer'>
+            <view class='left_footer_text color_gray'>满 {{item.condition}} 可用 </view>
+            <view class='left_footer_text color_gray' style='margin-top: 10rpx;'>使用有效期：{{item.startTime}} - {{item.endTime}}</view>
+          </view>
+          
+        </view>
+        <view class='ticket_right'>
+          <view class='ticket_wrap1 flex_row'>
+            <view class='ticket_text2'>￥</view>
+            <view class='ticket_text3'>{{item.money}}</view>
+          </view>
+          <view class='nu_btn {{item.isget ? "receive":"no_receive"}}' bindtap='receiveCoupon' 
+          data-id="{{item.id}}" data-index="{{index}}">{{item.isget ? "已领取":"领取"}}</view>
+        </view>
+      </view>
+      <view class='half half_top'></view>
+      <view class='half half_bottom'> </view>
+    </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+</view>
+

@@ -1,0 +1,143 @@
+/* pages/USER/user/user.wxss */
+page {
+  background-color: #EFEFF4;
+}
+.user_header {
+  padding: 60rpx 25rpx 180rpx;
+}
+.user_header_avatar image {
+  display: block;
+  width: 126rpx;
+  height: 126rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+.user_header_avatar view {
+  width: 126rpx;
+  height: 126rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #F6F7F9;
+}
+.user_detail {
+  margin: 15rpx 25rpx;
+}
+.user_login {
+  font-size: 28rpx;
+  color: #fff !important;
+  border: 1rpx solid #fff !important;
+}
+.user_name {
+  font-size: 28rpx;
+  color: #fff;
+}
+.user_name::after {
+  border: 0;
+}
+.user_sex {
+  display: block;
+  width: 31rpx;
+  height: 31rpx;
+  margin: 14rpx 0 0;
+}
+.user_msg {
+  position: absolute;
+  top: 40%;
+  right: 60rpx;
+  transform: translate(0, -50%);
+}
+.icon_msg {
+  display: block;
+  width: 48rpx;
+  height: 48rpx;
+}
+.user_msg button {
+  position: absolute; 
+  width: 100%; 
+  height: 100%; 
+  left: 0; 
+  top: 0; 
+  opacity: 0;
+}
+.msg_count {
+  position: absolute;
+  top: -8rpx;
+  right: -28rpx;
+  width: 40rpx;
+  border-radius: 6rpx;
+  background-color: #fff;
+  font-size: 18rpx;
+  text-align: center
+}
+
+.user_order {
+  overflow: hidden;
+  width: 95%;
+  margin: -110rpx auto;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+.user_order_wrap {
+  padding: 30rpx 25rpx;
+  background-color: #fff;
+}
+.user_order_t {
+  font-size: 30rpx;
+}
+.user_order_b {
+  font-size: 24rpx;
+  color: #ADADAD;
+}
+.icon_all {
+  display: block;
+  width: 13rpx;
+  height: 23rpx;
+  margin: 7rpx 0 0 14rpx;
+}
+.order_item_wrap {
+  padding: 30rpx 37rpx 25rpx;
+  border-top: 1rpx solid #E5E5E5;
+  background-color: #fff;
+}
+.order_item image {
+  display: block;
+  width: 44rpx;
+  height: 44rpx;
+  margin: 0 auto;
+}
+.order_item > view {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+}
+
+.user_list {
+  overflow: hidden;
+  width: 95%;
+  margin: 140rpx auto 0;
+  padding: 10rpx 0;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+.icon_list_right {
+  display: block;
+  width: 15rpx;
+  height: 25rpx;
+  margin-top: 10rpx;
+}
+.list_item {
+  padding: 20rpx 26rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.list_item:last-child {
+  border-bottom: 0;
+}
+.refund {
+  display: block;
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 50rpx;
+}
+.item_text {
+  font-size: 26rpx;
+}

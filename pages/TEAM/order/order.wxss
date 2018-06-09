@@ -1,0 +1,78 @@
+/* pages/USER/order/order.wxss */
+page {
+  background-color: #EFEFF4;
+}
+.order_item {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.order_item_header {
+  padding: 25rpx;
+}
+.title {
+  margin-left: 27rpx;
+  font-size: 26rpx;
+}
+.unchecked {
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+}
+.icon_seller {
+  display: block;
+  width: 34rpx;
+  height: 32rpx;
+  margin-left: 27rpx;
+}
+.icon_right {
+  display: block;
+  width: 13rpx;
+  height: 23rpx;
+  margin: 8rpx 0 0 20rpx;
+}
+.order_state {
+  font-size: 25rpx;
+}
+
+.seller_content {
+  padding: 12rpx 20rpx;
+  background: #F9F9F9;
+}
+.seller_content > image {
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+}
+.seller_text {
+  width: 570rpx;
+  padding-left: 20rpx;
+  padding-right: 5rpx;
+}
+.seller_text_inner_left {
+  width: 435rpx;
+}
+.seller_m {
+  padding: 0 25rpx 20rpx;
+  font-size: 22rpx;
+  text-align: right;
+}
+.order_item_footer {
+  padding: 10rpx 0;
+  border-top: 1rpx solid #E5E5E5;
+}
+.footer_btn {
+  min-width: 160rpx;
+  margin-right: 25rpx;
+  padding: 8rpx 20rpx;
+  border: 1px solid;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+.btn_pay {
+  color: #fff;
+}
+.btn_cancel {
+  border-color: #232323;
+  color: #232323;
+}

@@ -1,0 +1,24 @@
+
+<view>
+
+  <view class='layout_wrap main_bg'> 
+     <view class='state'>{{shippingName}}</view> 
+    <view class='order_num'>运单号：{{invoiceNo}}</view>
+  </view> 
+
+  <view class='express_wrap'>
+
+    <view class='express_item' wx:for="{{queryExpress.expressData}}" wx:key>
+      <view class='date_time'>
+        <view class='time'>{{item.time}}</view>
+        <view class='date color_gray'>{{item.date}}</view>
+      </view>
+      <view class='remark tx_ov2'>{{item.context}}</view>
+    </view>
+
+  </view>
+
+  <view class='wuliu_footer'>
+    <view class='color_gray'>本信息由{{shippingName}}提供</view>
+  </view>
+</view>

@@ -1,0 +1,173 @@
+<import src="../../../utils/wxParse/wxParse.wxml" />
+
+<view>
+  <view>
+    <view>
+      <!-- 轮播图 -->
+      <swiper class='swiper_wrap' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" circular="{{true}}">
+        <block wx:for="{{gallerys}}" wx:key>
+          <swiper-item>
+            <image src="{{http + item.image_url}}" class="slide_image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 商品信息 -->
+      <view class='detail_inner clearfix'>
+        <view class='flex_between align_items'>
+          <view class='flex_row align_items'>
+            <view class='detail_m'>￥{{teamInfo.team_price}}</view>
+             <view class='color_gray' wx:if="{{goodsInfo.market_price}}"
+             style='text-decoration: line-through; font-size: 24rpx; margin-left: 15rpx;'>￥{{goodsInfo.market_price}}</view> 
+          </view>
+          <view class='detail_b'>{{teamInfo.needer}}人成团 · 销量{{teamInfo.sales_sum}}笔</view>
+        </view>
+        <view class='detail_c tx_ov2'>{{teamInfo.goods_name}}</view>
+        <view class='flex_between'>
+          <view style='font-size: 24rpx;'>
+            <view class='color_gray1' wx:if="{{teamInfo.team_notice}}">公告：{{teamInfo.team_notice}}</view>
+            <view wx:if="{{!teamInfo.team_notice}}"></view>
+          </view>
+          <view class='detail_p right'>库存({{goodsInfo.store_count}}件)</view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+
+  <view class='team_found'>
+    <view class='team_found_header flex_between align_items'>
+      <view class='team_found_title'>有{{teamFounds.length}}个团，可直接参与拼团</view>
+      <!-- <view class='team_found_link flex_row'>
+        <view class=''>查看更多</view>
+        <view class=''> > </view>
+      </view> -->
+    </view>
+    <view>
+      <view class='item flex_between' wx:for="{{teamFounds}}" wx:key>
+        <view class='item_left flex_row'>
+          <image class='item_avatar' src='{{item.head_pic}}'></image>
+          <view>{{item.nickname}}</view>
+        </view>
+        
+        <view class='flex_row'>
+          <view>
+            <view style='margin-top:18rpx; text-align: right;'>还差{{item.join}}人</view>
+            <!-- <view>{{item.time_limit}}</view> -->
+          </view>
+          <view>
+            <view class='team_item_btn main_bg' bindtap='openPop' data-found-id="{{item.found_id}}">去参团</view>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+
+  <view class='detail_comment'>
+    <view class='flex_between align_items'>
+      <view class='comment_title'>商品评价（{{goodsInfo.comment_statistics.total_sum}}）</view>
+      <navigator class='comment_link' style="color: #535457;" 
+      url='/pages/HOME/comment/comment?id={{goodsInfo.goods_id}}'>查看全部 ></navigator>
+    </view>
+    <view class='comment_inner'>
+      <view class='comment_item' wx:for="{{comments}}" wx:if="{{index < 2}}" wx:key>
+        <view class='flex_between'>
+          <view class='flex_row'>
+             <image class='comment_avatar' src='{{item.head_pic}}'></image> 
+
+            <view class='comment_name'>{{item.username}}</view>
+          </view>
+          <view class='comment_date color_gray'>{{item.add_time}}</view>
+        </view>
+
+        <view class='comment_text'>{{item.content}}</view>
+        <!-- <view class='comment_type color_gray'>颜色：压花款2个装</view> -->
+
+      </view>
+    </view>
+  </view>
+
+  <view class='detail_detail'>
+    <view class='detail_header'>
+      <view class='detail_title'>商品详情</view>
+    </view>
+      <view>
+      <block>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </block>
+    </view> 
+  </view>
+
+</view>
+
+<view class="footer flex_row">
+  <view class='footer_left flex_between'>
+    <navigator url='/pages/HOME/home/home' open-type="switchTab" class='shouye'>
+      <image src='../../../images/icon_home.png'></image>
+      <view>首页</view>
+    </navigator>
+    <view class='shouye'>
+      <image src='../../../images/icon_kf.png'></image>
+      <view>客服</view>
+      <button open-type='contact'></button>
+    </view>
+    <view class='shouye' bindtap='collectFn'>
+      <image src='../../../images/{{goodsInfo.is_collect ? "icon_collect_t.png" : "icon_collect_f.png"}}'></image>
+      <view>收藏</view>
+    </view>
+  </view>
+  
+  <view class='footer_right'>
+    <view class='flex_box'>
+      <navigator class='footer_btn' url='/pages/KILL/detail/detail?id={{goodsInfo.goods_id}}'>单独购买</navigator>
+      <view class='footer_btn main_bg' bindtap='openPop'>一键拼团</view> 
+    </view>
+  
+  </view>
+</view>
+
+<view class="mask {{isShowPop ? '' : 'none'}}" catchtap='colsePop'></view>
+<view class="pop {{isShowPop ? '' : 'none'}}">
+  <view class='pop_close' bindtap='colsePop'>
+    <image src="../../../images/icon_empt.png"></image>
+  </view>
+  <view class='pop_header'>
+    <view class='pop_header_img'>
+      <image src="{{host}}&c=Goods&a=goodsThumImages&width=236&height=236&goods_id={{goodsInfo.goods_id}}"></image>
+    </view>
+    <view class='pop_header_c'>
+      <view class='pop_header_m'>{{selectedSpec.price}}</view>
+      <view class='pop_header_k'>库存{{selectedSpec.store_count}}件  
+      <view class='color_gray' style='display: inline-block;' wx:if="{{teamInfo.buy_limit > 0}}">最多购买{{teamInfo.buy_limit}}件</view></view>
+      <view class='pop_header_s flex_row'>
+        <view wx:if="{{specs.length > 0}}">请选择</view>
+        <view wx:for="{{specs}}" wx:for-item="spec" wx:key style='margin-left: 10rpx;'>{{spec.spec_name}}</view>
+      </view>
+    </view>
+  </view>
+  <scroll-view scroll-y class='pop_center'>
+    <view>
+      <view class='spec_item' wx:for="{{specs}}" wx:for-item="spec" wx:key>
+        <view class='pop_center_t'>{{spec.spec_name}}</view>
+        <view class='clearfix'>
+          <view class='color_item left {{item.selected ? "selected" : ""}}' wx:for="{{spec.spec_list}}" wx:key 
+          data-specs="{{specs}}" data-name="{{spec.spec_name}}" data-id="{{item.item_id}}" bindtap='selectSpec'>{{item.item}}</view>
+        </view> 
+      </view>
+    </view>
+    <view class='pop_bottom flex_between'>
+      <view class='pop_bottom_t'>购买数量</view>
+      <view class='flex_between'>
+        <view class='btn_num' bindtap='downNum'>-</view>
+        <view class='pop_bottom_i'>
+          <input value='{{selectedSpec.num}}' bindblur="onblur" bindinput='onInput'></input>
+        </view>
+        <view class='btn_num' bindtap='upNum'>+</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class='pop_footer main_bg'>
+    <view bindtap='sure'>确定</view>
+  </view>
+</view>  

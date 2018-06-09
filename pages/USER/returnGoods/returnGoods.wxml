@@ -1,0 +1,40 @@
+<view>
+  <view class='order flex_between' wx:for="{{order.order_goods}}" wx:key>
+    <image class='seller_img' src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{item.goods_id}}'></image>
+    <view class='seller_detail'>
+      <view class='tx_ov2'>{{item.goods_name}}</view>
+      <view style='color: #B3B1B2; margin-top: 20rpx;'>{{item.spec_key_name}}</view>
+    </view>
+  </view>
+
+  <view class='return_wrap'>
+    <!-- <view class='item flex_between' bindtap='fun' data-type="0">
+      <view >
+        <view class='title'>仅退款</view>
+        <view class='color_gray'>未收到货（包含未签收），或卖家协商同意前提下</view>
+      </view>
+      <view class='icon_right color_gray'> > </view>
+    </view> -->
+    <view class='item flex_between' bindtap='fun' data-type="1">
+      <view >
+        <view class='title'>退货退款</view>
+        <view class='color_gray'>已收到货，需要退换已收到的货物</view>
+      </view>
+      <view class='icon_right color_gray'> > </view>
+    </view>
+    <view class='item flex_between' bindtap='fun' data-type="2">
+      <view >
+        <view class='title'>换货</view>
+        <view class='color_gray'>商品存在质量问题，联系卖家协商换货</view>
+      </view>
+      <view class='icon_right color_gray'> > </view>
+    </view>
+    <view class='item flex_between' bindtap='fun' data-type="3">
+      <view >
+        <view class='title'>维修</view>
+        <view class='color_gray'>商品存在质量问题，联系卖家协商维修</view>
+      </view>
+      <view class='icon_right color_gray'> > </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,183 @@
+/* pages/USER/order-logistic/order-logistic.wxss */
+
+page {
+  padding-top: 165rpx;
+  padding-bottom: 90rpx;
+  background-color: #EFEFF4;
+}
+.layout_wrap {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30rpx 45rpx;
+}
+.seller_img {
+  display: block;
+  width: 120rpx;
+  height: 120rpx;
+}
+.order_content {
+  width: 540rpx;
+  padding-left: 40rpx;
+}
+.state {
+  font-size: 30rpx;
+  color: #fff;
+}
+.order_num {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.wuliu_wrap {
+  position: relative;
+  padding: 20rpx 55rpx;
+  background-color: #fff;
+  font-size: 26rpx;
+}
+.wuliu_wrap:after {  
+    content: "";  
+    display: block; 
+    background-color: #B3B1B2;  
+    position: absolute;  
+    left: 110rpx; 
+    right: 110rpx; 
+    top: 98rpx;  
+    height: 4px; 
+}
+.wuliu_state {
+  padding: 3rpx 15rpx;
+  color: #B3B1B2;
+}
+.wuliu_state.active {
+  position: relative;
+  padding: 3rpx 15rpx;
+  background-color: #E93342;
+  border-radius: 30rpx;
+  color: #fff;
+}
+.wuliu_state.active::after {
+  position: absolute;
+  top: 36rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 15rpx solid transparent;
+  border-top: 15rpx solid #E93342;
+  width: 0;
+  height: 0;
+  content: ' '
+}
+.wuliu_item {
+  padding: 15rpx;
+  text-align: center;
+}
+.wuliu_dot {
+  z-index: 2;
+  position: relative;
+  width: 34rpx;
+  height: 34rpx;
+  background-color: #B3B1B2;
+  margin: 14rpx auto;
+  border-radius: 50%;
+  border: 7rpx solid #fff;
+}
+.wuliu_dot.active {
+  background-color: #E93342;
+}
+
+.express_wrap {
+  position: relative;
+  padding-top: 200rpx;
+  padding: 40rpx;
+  background-color: #fff;
+}
+.express_wrap:after {  
+    content: "";  
+    display: block; 
+    background-color: #B3B1B2;  
+    position: absolute;  
+    bottom: 40rpx;  
+    left: 140rpx;  
+    top: 40rpx;  
+    width: 1rpx; 
+}
+.express_item {
+  z-index: 2;
+  position: relative;
+  margin-bottom: 60rpx;
+  padding: 40rpx 0;
+  background-color: #fff;
+}
+.express_item:last-child {
+  margin-bottom: 0;
+}
+.date_time {
+  width: 30%;
+  text-align: center;
+}
+.time {
+  padding-top: 10rpx;
+  font-size: 26rpx;
+  color: #000;
+}
+.date {
+  margin-top: 15rpx;
+  font-size: 20rpx;
+}
+.remark {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  width: 70%;
+  line-height: 48rpx;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+}
+
+.drop_more {
+  padding: 20rpx 0;
+  background-color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  vertical-align: bottom;
+}
+.drop_down {
+  position: absolute;
+  top: 5rpx;
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 15rpx;
+}
+
+.wuliu_footer {
+  z-index: 3;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 24rpx 0;
+  border-top: 1rpx solid #EFEFF4;
+  background-color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+}
+.wuliu_footer::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 150rpx;
+  right: 150rpx;
+  height: 1rpx;
+  background-color: #B3B1B2;
+}
+.wuliu_footer > view {
+  z-index: 2;
+  position: relative;
+  display: inline-block;
+  padding: 0 20rpx;
+  background: #fff;
+}

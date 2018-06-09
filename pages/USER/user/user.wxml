@@ -1,0 +1,42 @@
+
+<view>
+  <view class='user_header main_bg flex_row'>
+    <view class='user_header_avatar'>
+      <image src='{{userInfo.head_pic}}' wx:if="{{userInfo.head_pic}}"></image>
+      <view wx:if="{{!userInfo.head_pic}}"></view>
+    </view>
+    <view class='user_detail'>
+      <button plain="{{true}}" class='user_login' wx:if="{{!userInfo.nickname}}" 
+      open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">立即登录</button>  
+      <view class='user_name' wx:if="{{userInfo.nickname}}">{{userInfo.nickname}}</view>
+      <image class='user_sex' wx:if="{{userInfo.sex == 0}}" src='../../../images/icon_man.png'></image>
+      <image class='user_sex' wx:if="{{userInfo.sex == 1}}" src='../../../images/icon_woman.png'></image>
+    </view>
+  </view>
+
+  <view class='user_order'>
+    <view class='user_order_wrap flex_between align_items' bindtap='openUserNav' data-type="ALL">
+      <view class='user_order_t'>我的订单</view>
+      <view class='flex_row'>
+        <view class='user_order_b'>全部 > </view> 
+      </view>
+    </view>
+    <view class='order_item_wrap flex_between'>
+      <view class='order_item' wx:for="{{userNav}}" wx:key data-type="{{item.type}}" bindtap='openUserNav'>
+         <image src='{{item.src}}' mode='scaleToFill'></image> 
+        <view>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='user_list'>
+    <view class='list_item flex_between' wx:for="{{items}}" wx:key bindtap='tabList' data-index="{{index}}">
+      <view class='flex_row'>
+         <image class='refund' wx:if="{{item.src}}" src='{{item.src}}'></image> 
+        <view class='item_text'>{{item.name}}</view>
+      </view>
+
+      <view class='color_gray' style='font-size: 28rpx;'> > </view>
+    </view> 
+  </view>
+</view>

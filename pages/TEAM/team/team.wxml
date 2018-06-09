@@ -1,0 +1,37 @@
+
+<view>
+
+  <view class='product_wrap'>
+    <navigator class='product_item' wx:for="{{products}}" wx:key 
+    url='/pages/TEAM/detail/detail?id={{item.goods_id}}&team_id={{item.team_id}}'>
+      <view>
+        <image src="{{host}}c=Goods&a=goodsThumImages&width=400&height=240&goods_id={{item.goods_id}}"></image>
+      </view>
+      <view class='product_item_c'>
+        <view class='product_c tx_ov2'>{{item.act_name}}</view>
+        <view class='flex_between product_item_i'>
+          <view>
+            <view class='flex_row align_items'>
+              <view class='product_m_i'>￥</view>
+              <view class='product_m'>{{item.team_price}}</view>
+              <view>单买 ￥{{item.goods.shop_price}}</view>
+            </view>
+            <view class='color_gray1' style='margin-top: 10rpx; font-size: 24rpx;'>{{item.needer}}人成团</view>
+          </view>
+          <view class='product_btn main_bg' style='margin-top: 8rpx;'>
+            <view>去拼单 ></view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+  
+</view>

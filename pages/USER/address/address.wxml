@@ -1,0 +1,41 @@
+<!--pages/EXPRESS/address/address.wxml-->
+<view>
+ <view wx:if="{{addList.length == 0}}">
+  <view style='padding: 20rpx 0; text-align: center; font-size: 24rpx;' class='color_gray'>一个地址都没有快去添加吧</view>
+ </view>
+
+  <view class='add_item' wx:for="{{addList}}" wx:key>
+    <view class='add_item_header' data-id="{{item.address_id}}" bindtap='selectItem'>
+      <view class='flex_between align_items'>
+        <view class='name'>{{item.consignee}}</view>
+        <view class='tel'>{{item.mobile}}</view>
+      </view>
+      <view class='add_add tx_ov2'>{{item.province_name}} {{item.city_name}} {{item.district_name}} {{item.address}}</view>
+    </view>
+    
+    <view class='add_item_op flex_between'>
+      <view class='flex_row' data-index="{{index}}" bindtap='setDefaultAdd'>
+        <view>
+          <image class='add_icon_red {{item.is_default > 0 ? "none":""}}' src='../../../images/icon_check.png'></image>
+          <image class='add_icon_red {{item.is_default > 0 ? "":"none"}}' src='../../../images/icon_checked.png'></image>
+        </view>
+        
+        <view class='add_text {{item.is_default > 0 ? "active":""}}'>默认地址</view>
+      </view>
+      <view class='flex_row'>
+        <view class='flex_row' data-index="{{index}}" bindtap='edit'>
+          <image class='add_icon' src='../../../images/edit.png'></image>
+          <view class='add_text'>编辑</view>
+        </view>
+        <view class='flex_row' style='margin-left: 45rpx;'data-id="{{item.address_id}}" bindtap='del'>
+          <image class='add_icon' src='../../../images/delete.png'></image>
+          <view class='add_text'>删除</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='add_footer'>
+    <navigator url='/pages/USER/addAddress/addAddress' class='add_btn main_bg'>添加收货地址</navigator>
+  </view>
+</view>

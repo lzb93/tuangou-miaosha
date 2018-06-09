@@ -1,0 +1,42 @@
+
+<view>
+  <view class='order flex_between' wx:for="{{order.order_goods}}" wx:key>
+    <image class='seller_img' src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{item.goods_id}}'></image>
+    <view class='seller_detail'>
+      <view class='tx_ov2'>{{item.goods_name}}</view>
+      <view style='color: #B3B1B2; margin-top: 20rpx;'>{{item.spec_key_name}}</view>
+    </view>
+  </view>
+
+  <view class='order_cancel'>
+    <view class='cancel_item flex_between' bindtap='openPop'>
+      <view>退款原因：</view>
+      <view class='select'> {{reason.name}}  > </view>
+    </view>
+    <view class='cancel_item flex_row'>
+      <view>退款金额：</view>
+      <view class='color_red'>￥{{order.total_amount}}</view>
+    </view>
+  </view>
+
+  <view class='order_remark'>
+    <view class='remark_title'>留言</view>
+    <input bindblur="bindTextAreaBlur" value="{{order.remark}}" placeholder='买家留言'></input>
+  </view>
+
+  <view class='footer'>
+    <view class='footer_btn main_bg' bindtap='submit'>提交</view>
+  </view>
+
+  <view class='mask {{isShowReason?"":"none"}}' catchtap='closeReason'></view>
+  <view class='pop {{isShowReason?"":"none"}}'>
+    <view class='pop_title'>退款原因</view>
+    <scroll-view scroll-y class='pop_inner'>
+      <view class='item flex_between' wx:for="{{reasons}}" wx:key data-id="{{item.id}}" bindtap='selectReason'>
+        <view>{{item.name}}</view>
+        <image class='unchecked' src='../../../images/{{reason.id == item.id ? "icon_checked.png":"icon_check.png"}}'></image>
+      </view>
+    </scroll-view>
+    <view class='pop_footer main_bg' bindtap='closeReason'>关闭</view>
+  </view>
+</view>

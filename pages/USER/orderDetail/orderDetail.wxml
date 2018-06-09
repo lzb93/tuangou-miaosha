@@ -1,0 +1,75 @@
+
+
+<view>
+  <view class='add flex_between'>
+    <image class='icon_add' src='../../../images/icon_address.png'></image>
+    <view class='add_detail'>
+      <view class='flex_between'>
+        <view>收货人：{{order.consignee}}</view>
+        <view>{{order.mobile}}</view>
+      </view>
+      <view class='tx_ov2' style='margin-top: 20rpx;'>
+        收货地址：{{order.total_address}}
+      </view>
+    </view>
+    <image class='add_line' src='../../../images/add_line.png'></image>
+  </view>
+
+  <view>
+    <view class='order_item'>
+      <view class='user_order_body'>
+        <navigator class='seller_content flex_row' wx:for="{{goods}}" wx:key url="/pages/KILL/detail/detail?id={{item.goods_id}}">
+          <image src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{item.goods_id}}'></image>
+          <view class='seller_text flex_between'>
+            <view class='seller_text_inner_left' style='font-size: 24rpx;'>
+              <view class='tx_ov2' style='line-height: 36rpx;'>{{item.goods_name}}</view>
+              <view style='margin-top: 20rpx; color: #B3B1B2;' wx:if="{{item.spec_key_name}}">{{item.spec_key_name}}</view>
+            </view>
+            <view style='font-size: 22rpx; text-align: right;'>
+              <view>￥{{item.final_price}}</view>
+              <view style='margin-top: 18rpx; color: #B3B1B2; text-decoration: line-through;' 
+              wx:if="{{item.market_price}}">￥{{item.market_price}}</view>
+              <view style='margin-top: 18rpx; color: #B3B1B2;'>X {{item.goods_num}}</view>
+            </view>
+          </view>
+        </navigator>
+        <view class='clearfix'>
+          <view class='flex_row align_items right'>
+            <!-- <view class='refund_btn' wx:if="{{order.order_status_detail == '待收货'}}" bindtap='cancelOrder'>申请退款</view> -->
+            <view class='seller_m'>合计：￥{{order.total_amount}} </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='order_info'>
+    <view>订单编号：{{order.order_sn}}</view>
+    <view wx:if="{{order.transaction_id}}">交易号：{{order.transaction_id}}</view>
+    <view>创建时间：{{addTime}}</view>
+    <view>付款时间：{{orderTime}}</view>
+  </view>
+
+  <view class='footer' wx:if="{{!from}}">
+    <view class='flex_between' wx:if="{{order.order_status_detail == '待支付'}}">
+      <view class='footer_btn half_btn' bindtap='cancelOrder'>取消订单</view>
+      <navigator class='footer_btn remind main_bg half_btn' url="/pages/CART/payment/payment?orderSn={{order.order_sn}}">付款</navigator>
+    </view>
+
+    <view wx:if="{{order.order_status_detail == '待发货'}}">
+      <view class='footer_btn' bindtap='cancelOrder'>取消订单</view>
+      <!-- <view class='footer_btn remind half_btn'>提醒发货</view> -->
+    </view>
+
+    <view class='flex_between' wx:if="{{order.order_status_detail == '待收货'}}">
+      <view class='footer_btn half_btn' bindtap='lookExpress' data-id="{{order.order_id}}">查看物流</view>
+      <view class='footer_btn remind half_btn main_bg' data-order_id="{{order.order_id}}" bindtap='confirm'>确认收货</view>
+    </view>
+
+    <view class='flex_between' wx:if="{{order.order_status_detail == '待评价'}}">
+      <view class='footer_btn half_btn' bindtap='saleAfter'>申请售后</view>
+      <view class='footer_btn remind half_btn main_bg' bindtap='comment'>评价</view>
+    </view>
+  </view>
+</view>

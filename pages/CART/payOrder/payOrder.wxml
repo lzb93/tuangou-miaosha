@@ -1,0 +1,103 @@
+
+<view>
+  <navigator class='add_address flex_between' wx:if="{{!address}}" url="/pages/USER/addAddress/addAddress?from=payOrder">
+    <view class='color_gray'>新增地址</view>
+    <view class='color_gray'> > </view>
+  </navigator>
+  <view class='add flex_between' bindtap='changeAddress' wx:if="{{address}}">
+    <image class='icon_add' src='../../../images/icon_address.png'></image>
+    <view class='add_detail'>
+      <view class='flex_between'>
+        <view>收货人：{{address.consignee}}</view>
+        <view>{{address.mobile}}</view>
+      </view>
+      <view class='tx_ov2' style='margin-top: 20rpx;'>
+        收货地址：{{address.total_address}}
+      </view>
+    </view>
+    <image class='add_line' src='../../../images/add_line.png'></image>
+  </view>
+
+  <view>
+    <view class='order_item'>
+      <view class='user_order_body'>
+        <view class='seller_content flex_row' wx:for="{{items}}" wx:key>
+          <image wx:if="{{item.goods.original_img}}" src='{{http}}{{item.goods.original_img}}'></image>
+          <image wx:if="{{!item.goods.original_img}}" 
+          src='{{host}}&c=Goods&a=goodsThumImages&width=140&height=140&goods_id={{item.goods_id}}'></image>
+          <view class='seller_text flex_between'>
+            <view class='seller_text_inner_left' style='font-size: 24rpx;'>
+              <view class='tx_ov2' style='line-height: 36rpx;'>{{item.goods_name}}</view>
+              <view style='margin-top: 20rpx; color: #B3B1B2;'>{{item.spec_key_name}}</view>
+            </view>
+            <view style='font-size: 22rpx; text-align: right;'>
+              <view>￥{{item.goods_price}}</view>
+              <view style='margin-top: 18rpx; color: #B3B1B2; text-decoration: line-through;' 
+              wx:if="{{item.market_price}}">￥{{item.market_price}}</view>
+              <view style='margin-top: 18rpx; color: #B3B1B2;'>X {{item.goods_num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class='list_item'>
+        <view class='flex_between'>
+          <view>运费：</view>
+          <view class='flex_row'>
+            <view style='padding-right: 15rpx;' wx:if="{{shippingPrice == 0}}">包邮</view>
+            <view style='padding-right: 15rpx;' wx:if="{{shippingPrice > 0}}">{{shippingPrice}}元</view>
+          </view>
+        </view>
+      </view>
+
+      <view class='list_item' bindtap='selectCoupon' wx:if="{{!pageType}}">
+        <view class='flex_between'>
+          <view>优惠券</view>
+          <view class='flex_row'>
+            <view style='padding-right: 15rpx;' wx:if="{{coupons.length == 0}}">无</view>
+            <view style='padding-right: 15rpx;' wx:if="{{coupons.length > 0 && !selectCoupon.id}}">
+              有 {{coupons.length}} 张可用
+            </view>
+            <view style='padding-right: 15rpx;' wx:if="{{coupons.length > 0 && selectCoupon.id}}">{{selectCoupon.money}}元</view>
+            <view class='color_gray'> > </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='footer clearfix'>
+    <view class='footer_left'>
+      <view class='right color_red'>￥{{totalPrice.total_fee}}</view>
+      <view class='right'>合计：   </view>
+    </view>
+    <view class='footer_btn remind main_bg' bindtap='save' wx:if="{{!pageType}}">提交订单</view>
+    <view class='footer_btn remind main_bg' bindtap='payment' wx:if="{{pageType}}">立即支付</view>
+  </view>
+</view>
+
+<view class='mask {{isShowPop ? "":"none"}}' catchtap='useCoupon'></view> 
+<view class='pop {{isShowPop ? "":"none"}}'>
+  <view>
+    <view class='pop_header'>优惠券</view>
+    <scroll-view scroll-y class='pop_body'>
+      <view class='item color_gray1' style='padding: 20rpx 25rpx; font-size: 26rpx; text-align: right;'
+      bindtap='notUseCoupon'>不使用优惠卷</view>
+      <view class='item flex_between' wx:for="{{coupons}}" wx:key> 
+        <view class='item_left'>
+          <view class='item_money flex_row align_items'>
+            <view class='color_red'>{{item.money}} </view>
+            <view class='icon_money color_red'>元</view>
+          </view>
+          <view class='item_title'>{{item.name}} ( {{item.use_type_title}} )</view>
+          <view class='item_remark color_gray'>订单满 {{item.condition}} 使用（不含邮费）</view>
+        </view>
+        <view class='item_right'>
+          <view class='btn_receive' bindtap='useCoupon' data-id="{{item.id}}">使用</view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='pop_footer main_bg' bindtap='useCoupon'>关闭</view>
+  </view>
+</view> 

@@ -1,0 +1,35 @@
+
+.order_item {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.seller_content {
+  margin-bottom: 10rpx;
+  padding: 12rpx 20rpx;
+  background: #F9F9F9;
+}
+.seller_content:last-child {
+  margin-bottom: 0;
+}
+.seller_content > image {
+  display: block;
+  width: 140rpx;
+  height: 140rpx;
+}
+.seller_text {
+  width: 570rpx;
+  padding-left: 20rpx;
+  padding-right: 5rpx;
+}
+.seller_text_inner_left {
+  width: 435rpx;
+}
+.order_item_footer {
+  padding: 15rpx 25rpx;
+  border-top: 1rpx solid #E5E5E5;
+  font-size: 24rpx;
+  text-align: right;
+}
+.order_sn {
+  font-size: 22rpx;
+}

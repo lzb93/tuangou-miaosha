@@ -1,0 +1,37 @@
+<view>
+
+  <view class='nav_wrap flex_between'>
+    <view class='nav_item' wx:for="{{navs}}" wx:key>
+      <view class="nav_item_s {{navType == item.type ? 'selected' : ''}}" data-type="{{item.type}}" bindtap='tabNavBar'>
+        {{item.name}}
+        <view>{{item.sum}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='comment_wrap'>
+    <view class='comment_item' wx:for="{{comments}}" wx:key>
+        <view class='flex_between'>
+          <view class='flex_row'>
+            <image class='comment_avatar' src='{{item.head_pic}}'></image>
+            <view class='comment_name'>{{item.username}}</view>
+          </view>
+          <view class='comment_date color_gray'>{{item.add_time}}</view>
+        </view>
+
+        <view class='comment_text'>{{item.content}}</view>
+        <view class='flex_row'>
+          <image wx:for="{{item.img}}" wx:key wx:for-item="img" src='{{img}}' class='comment_img'></image>
+        </view>
+      </view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{!isNomore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+  </view>
+
+</view>

@@ -1,0 +1,49 @@
+<view>
+  <scroll-view class='scroll_wrap' scroll-x style='white-space: nowrap; background: #fff;'>
+    <view class='scroll_item {{active == index ? "active" : ""}}' wx:for="{{navs}}" wx:key bindtap='switchTab' data-index="{{index}}">
+      <view>{{item.font}}</view>
+      <view wx:if="{{index == 0}}">秒杀中</view>
+      <view wx:if="{{index != 0}}">即将开始</view>
+    </view>
+  </scroll-view>
+
+  <view class='product_wrap flex_between'>
+    <view class='product_item' wx:for="{{items}}" wx:key bindtap='urlDetail' data-id="{{item.goods_id}}" data-item-id="{{item.item_id}}">
+      <view>
+        <image class='item_img' src='{{host}}&c=Goods&a=goodsThumImages&width=740&height=740&goods_id={{item.goods_id}}'></image>
+      </view>
+      <view class='item_inner'>
+        <view class='flex_between'>
+          <view class='title tx_ov'>  </view>
+          <view class='miaosha'>
+            <view wx:if="{{active == 0}}">秒杀进行中</view> 
+            <view wx:if="{{active != 0}}">秒杀即将开始</view> 
+            <image src='../../../images/{{active == 0 ? "icon_kill_jinxing.png" : "icon_kill_jijiang.png"}}'></image>
+          </view>
+        </view>
+         <view class='item_text tx_ov2'>{{item.goods_name}}</view> 
+        <view class='flex_between'>
+          <view class='flex_row align_items' style='margin-top: 12rpx;'>
+            <view class='flex_row align_items'>
+              <view class='icon_money color_red'>￥</view>
+              <view class='money color_red'>{{item.price}}</view>
+            </view>
+            <view class='sale_money color_gray'>￥{{item.shop_price}}</view>
+          </view>
+          <view class='btn_miaosha {{active == 0?"main_bg":"jijiang"}}'>
+            <view wx:if="{{active == 0}}">马上秒杀</view> 
+            <view wx:if="{{active != 0}}">即将开始</view> 
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-loadmore" wx:if="{{!isNomore}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:if="{{isNomore}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的!</view>
+    </view>
+  </view>
+</view>

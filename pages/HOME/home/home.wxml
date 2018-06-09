@@ -1,0 +1,104 @@
+<view class=''>
+  <view class='search_container'>
+    <view class='search flex_between'>
+      <view class='search_left flex_row'>
+        <view class='search_icon'>
+          <image src='../../../images/icon_search.png'></image>
+        </view>
+        <view class='search_input'>
+          <input placeholder='使用关键词快速查找商品' value="{{keyword}}" type="text"placeholder-class="psection" confirm-type="search"
+          maxlength="20" bindblur="onblur" bindinput="oninput" bindconfirm="search"></input>
+        </view>
+      </view>
+      <view class="icon_empt" wx:if="{{isEmpt}}" bindtap="empt">
+        <image src="../../../images/icon_empt.png"></image>
+      </view>
+      <view class='search_btn main_color' bindtap="search">搜索</view>
+    </view>
+  </view>
+
+  <swiper wx:if="{{banners.length > 0}}" class='swiper' indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" 
+  circular="{{true}}">
+    <block>
+      <swiper-item wx:for="{{banners}}" wx:key wx:if="{{item.goods_id}}">
+        <navigator url='/pages/KILL/detail/detail?id={{item.goods_id}}'>
+          <image src="{{http + item.img}}"></image>
+        </navigator>
+      </swiper-item>
+      <swiper-item wx:for="{{banners}}" wx:key wx:if="{{!item.goods_id}}">
+        <view>
+          <image src="{{http + item.img}}"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='layout'>
+    <view class='layout_inner flex_between' style='padding: 20rpx 50rpx; background: #fff;'>
+      <view class='nav_item' wx:for="{{navTabs}}" wx:key bindtap='tabList' data-index="{{index}}">
+        <image src='{{item.src}}' mode='aspectFit'></image>
+        <view class='item_text'>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='layout' wx:if="{{selections.length > 0}}">
+    <view class='layout_header'>
+      <image style='display: block; width: 340rpx; height: 68rpx; margin: 20rpx auto 0;' src='../../../images/huodong.png'></image>
+    </view>
+    <view class='layout_inner flex_between'>
+      <navigator class='activity_item flex_between' wx:for="{{selections}}" wx:key url='/pages/KILL/detail/detail?id={{item.goods_id}}'>
+        <view class='item_content'>
+          <view class='text tx_ov2'>{{item.goods_name}}</view>
+          <view class='limit'>
+            <view class='limit_inner flex_row align_items'>
+              <view>限时特惠:</view>
+              <view style='font-size: 20rpx;'>￥{{item.shop_price}}</view>
+            </view>
+          </view>
+        </view>
+        <view>
+          <image class='img' src='{{host}}&c=Goods&a=goodsThumImages&width=300&height=300&goods_id={{item.goods_id}}'></image>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class='layout' wx:if="{{recommends.length > 0}}">
+    <view class='layout_header'>
+      <image style='display: block; width: 340rpx; height: 68rpx; margin: 20rpx auto 0;' src='../../../images/tuijian.png'></image>
+    </view>
+    <view class='layout_inner' style='padding: 0 25rpx;'>
+      <navigator class='cuxiao_item flex_between' wx:for="{{recommends}}" wx:key url='/pages/KILL/detail/detail?id={{item.goods_id}}'>
+        <view>
+          <image src='{{host}}&c=Goods&a=goodsThumImages&width=544&height=366&goods_id={{item.goods_id}}' mode='aspectFit'></image>
+        </view>
+        <view class='item_content'>
+          <view class='title tx_ov2'>{{item.goods_name}}</view>
+          <view class='flex_between align_items' style='margin-top: 38rpx;'>
+            <view class='item_money color_red'>￥{{item.shop_price}}</view>
+            <view class='item_buy color_gray'>成交{{item.sales_sum}}笔</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class='layout' wx:if="{{sales.length > 0}}">
+    <view class='layout_header'>
+      <image style='display: block; width: 340rpx; height: 68rpx; margin: 20rpx auto 0;' src='../../../images/xinpin.png'></image>
+    </view>
+    <view class='layout_inner flex_between'>
+      <navigator class='product_item' wx:for="{{sales}}" wx:key url='/pages/KILL/detail/detail?id={{item.goods_id}}'>
+        <view>
+          <image src='{{host}}&c=Goods&a=goodsThumImages&width=740&height=740&goods_id={{item.goods_id}}' mode='aspectFit'></image>
+        </view>
+        <view class='product_content'>
+          <text class='item_text tx_ov2'>{{item.goods_name}}</text>
+          <view class='item_money color_red'>￥{{item.shop_price}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+</view>
